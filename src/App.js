@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/navBar';
 import Greeting from './components/greeting';
 import { getMessages } from './redux/messages';
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
