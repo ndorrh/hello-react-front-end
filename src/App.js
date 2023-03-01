@@ -1,12 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import NavBar from './components/navBar';
+import Greeting from './components/greeting';
+import { getMessages } from './redux/messages';
 import './App.css';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMessages());
+  }, [dispatch]);
+  const message = useSelector((state) => state.message.messages[0]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Welcome</h1>
-      </header>
+    <div>
+      <NavBar />
+      <Routes>
+        <Route
+          path="/"
+          element={<h2>React and Rails as two separate apps</h2>}
+        />
+        <Route
+          path="/message"
+          element={<Greeting prop={message} />}
+        />
+      </Routes>
     </div>
   );
 }
