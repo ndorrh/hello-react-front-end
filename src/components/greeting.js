@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Greeting = ({prop}) => {
+const Greeting = ({ prop }) => {
 
   console.log(prop)
   if (prop != undefined && prop != null) {
